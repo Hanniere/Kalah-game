@@ -22,6 +22,7 @@ public class DistributeStonesRuleTest {
 	@Test
 	public void testDistributeStones() {
 		assertTrue(true);
+		//TODO implement
 	}
 
 }

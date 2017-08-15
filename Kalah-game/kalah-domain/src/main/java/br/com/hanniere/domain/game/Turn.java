@@ -20,6 +20,14 @@ public class Turn {
 		this.lastDropedIndex = lastDropedIndex;
 	}
 
+	/**
+	 * Returns the field of the player
+	 *
+	 * @return
+	 *
+	 * <li> 1 - Field of player 1
+	 * <li> 2 - Field of player 2
+	 */
 	public int getLastDropedIndexField() {
 		return lastDropedIndexField;
 	}

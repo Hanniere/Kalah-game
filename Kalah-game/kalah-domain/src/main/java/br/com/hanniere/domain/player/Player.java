@@ -24,6 +24,10 @@ public class Player {
 
 	}
 
+    public int retrieveOponentPlayerNumber(){
+    	return playerNumber == Player.SECOND_PLAYER? Player.FIRST_PLAYER: Player.SECOND_PLAYER;
+    }
+
     public String getName() {
         return name;
     }

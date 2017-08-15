@@ -27,6 +27,14 @@ public class Game {
 
 	private Player winner;
 
+	public Player retrievePlayer(int playerNumber){
+		for (Player player : playersList) {
+			if(player.getPlayerNumber() == playerNumber)
+				return player;
+		}
+
+		return null;
+	}
 
 
 	//getters and setters
@@ -77,6 +85,5 @@ public class Game {
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
-
 
 }

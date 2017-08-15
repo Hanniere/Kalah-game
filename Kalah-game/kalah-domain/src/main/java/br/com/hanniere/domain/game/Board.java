@@ -11,6 +11,7 @@ public class Board {
 	 * Number of Houses for each player
 	 */
 	public static final int HOUSES_NUM = 6;
+	public static final int STORE_INDEX = -1;
 
 	private int numberOfStonesForPit;
 
@@ -42,12 +43,33 @@ public class Board {
 		}
 	}
 
-	public Pit[] retrievePlayerHouses(int playerType){
-		return playerType == Player.FIRST_PLAYER? player1HouseList: player2HouseList;
+	public Pit[] retrievePlayerHouses(int playerNumber){
+		return playerNumber == Player.FIRST_PLAYER? player1HouseList: player2HouseList;
 	}
 
-	public Pit retrievePlayerStore(int playerType){
-		return playerType == Player.FIRST_PLAYER? (Store)player1Store: (Store)player2Store;
+	public Pit retrievePlayerStore(int playerNumber){
+		return playerNumber == Player.FIRST_PLAYER? (Store)player1Store: (Store)player2Store;
+	}
+
+	/**
+	 * Verifies if the houses of a player are empties.
+	 * @param playerNumber
+	 * @return
+	 * <li> true - are empties.
+	 * <li> false - at least one house has stones.
+	 */
+	public Boolean verifyIfPlayerHousesIsEmpty(int playerNumber){
+
+		Pit[] playerHouses = retrievePlayerHouses(playerNumber);
+
+		for (Pit pit : playerHouses) {
+
+			if(pit.getStones() > 0){
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	//getters and setters

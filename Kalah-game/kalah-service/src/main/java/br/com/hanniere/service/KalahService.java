@@ -24,7 +24,7 @@ public class KalahService {
 
 
 	public Game initializeGame(int numberOfStonesForPit, Player player1, Player player2){
-		//TODO validar players
+
 		List<Player> playersList = this.playerRepository.findAll();
 
 		for (Player player : playersList) {
@@ -46,9 +46,8 @@ public class KalahService {
 	}
 
 	public Game performTurn(Game kalahGame, int chosenHouse){
-		//TODO retrieve users and validate
-		ruleChainConfigurator.getKalahRule().execute(kalahGame, chosenHouse);
-		//TODO call the logic to play
+
+		ruleChainConfigurator.getaDistributeRule().execute(kalahGame, chosenHouse);
 
 		return kalahGame;
 	}

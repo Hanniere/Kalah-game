@@ -13,10 +13,22 @@ public class House extends Pit{
 	 * This method can be used in a turn or capture stones.
 	 * @return stones qtd
 	 */
-	public int emptyHouse(){
+	public int emptyTheHouse(){
 		int stonesToRetry = getStones();
 		setStones(0);;
 		return stonesToRetry;
+	}
+
+	/**
+	 * Returns if the house was empty when player dropped the stones.
+	 *
+	 * @return
+	 * <li>true - it was empty
+	 * <li>false - it was not empty
+	 *
+	 */
+	public Boolean wasEmpty(){
+		return getStones() == 1? true: false;
 	}
 
 }
