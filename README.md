@@ -10,6 +10,9 @@ cd to kalah-rest folder: mvn spring-boot:run
 You should be able to access the services on:
 http://localhost:8080/kalah/
 
+# API
+There are two samples requets in parent's folder to be used against the API, one for initialize the game, other to choose a house.
+
 # Stack
 * Maven
 * Java 8
