@@ -1,0 +1,93 @@
+{
+	"variables": [],
+	"info": {
+		"name": "requests-samples",
+		"_postman_id": "e6cfd12f-a4ee-76e9-f873-08c76a48b93f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "perform-turn-request",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/kalah/play/?chosenhouse=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kalah",
+						"play",
+						""
+					],
+					"query": [
+						{
+							"key": "chosenhouse",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gameBoard\": {\n        \"numberOfStonesForPit\": 4,\n        \"player1PitList\": [\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            }\n        ],\n        \"player2PitList\": [\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            }\n        ],\n        \"player1Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        },\n        \"player2Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        }\n    },\n    \"gameStatus\": \"INPROGRESS\",\n    \"currentTurn\": null,\n    \"playersList\": [\n        {\n            \"id\": 10,\n            \"name\": \"Player north\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Player South\"\n        }\n    ],\n    \"currentPlayer\": {\n        \"id\": 10,\n        \"name\": \"Player north\"\n    },\n    \"winner\": null\n}"
+				},
+				"description": "Request para efetuar a jogada."
+			},
+			"response": []
+		},
+		{
+			"name": "initiate-game-request",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/kalah/start/?stones=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"kalah",
+						"start",
+						""
+					],
+					"query": [
+						{
+							"key": "stones",
+							"value": "6",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 10,\r\n     \"name\": \"Player north\"\r\n}\r\n\r\n{\r\n\t\"id\": 11,\r\n     \"name\": \"Player South\"\r\n}\r\n\t"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
