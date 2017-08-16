@@ -5,7 +5,7 @@
 
 	<groupId>br.com.hanniere</groupId>
 	<artifactId>kalah-game</artifactId>
-	<version>${project.version}</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>kalah-domain</module>
 		<module>kalah-repository</module>
@@ -31,6 +31,35 @@
 		<project.version>0.0.1-SNAPSHOT</project.version>
 	</properties>
 
+	<dependencyManagement>
+        <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+                <artifactId>kalah-domain</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kalah-repository</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kalah-rest</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kalah-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,5 +77,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+
+		</pluginManagement>
+
+	</build>
 
 </project>
