@@ -91,5 +91,64 @@ public class CheckEndGameRuleTest {
 		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
 	}
 
+	@Test
+	public void testPlayer1Winner() {
+
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
+
+
+		kalahGame.getGameBoard().getPlayer2HouseList()[0].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[1].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[2].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[3].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[4].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[5].setStones(0);
+		kalahGame.getGameBoard().getPlayer2Store().setStones(35);
+
+		checkEndGameRule.execute(kalahGame, -1);
+
+		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
+		assertEquals(kalahGame.getPlayersList().get(0), kalahGame.getWinner());
+	}
+
+	@Test
+	public void testPlayer2Winner() {
+
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
+
+
+		kalahGame.getGameBoard().getPlayer1HouseList()[0].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[1].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[2].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[3].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[4].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[5].setStones(0);
+		kalahGame.getGameBoard().getPlayer1Store().setStones(35);
+
+		checkEndGameRule.execute(kalahGame, -1);
+
+		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
+		assertEquals(kalahGame.getPlayersList().get(1), kalahGame.getWinner());
+	}
+
+	@Test
+	public void testGameDraw() {
+
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
+
+
+		kalahGame.getGameBoard().getPlayer1HouseList()[0].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[1].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[2].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[3].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[4].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[5].setStones(0);
+		kalahGame.getGameBoard().getPlayer1Store().setStones(36);
+
+		checkEndGameRule.execute(kalahGame, -1);
+
+		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
+		assertEquals(null, kalahGame.getWinner());
+	}
 
 }

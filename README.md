@@ -1,5 +1,5 @@
 # Kalah Game
-[![Coverage Status](https://coveralls.io/repos/github/Hanniere/kalah-game/badge.svg?branch=master)](https://coveralls.io/github/Hanniere/kalah-game?branch=master)
+
 
 # Build
 
