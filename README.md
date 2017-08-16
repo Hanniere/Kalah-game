@@ -1,5 +1,5 @@
 # Kalah Game
-
+[![Coverage Status](https://coveralls.io/repos/github/Hanniere/kalah-game/badge.svg?branch=master)](https://coveralls.io/github/Hanniere/kalah-game?branch=master)
 
 # Build
 
@@ -15,6 +15,7 @@ There are two samples requets in parent's folder to be used against the API, one
 
 # Stack
 * Maven
+* Ehcache
 * Java 8
 * Spring Boot
 * JUnit + Spring Boot Test
