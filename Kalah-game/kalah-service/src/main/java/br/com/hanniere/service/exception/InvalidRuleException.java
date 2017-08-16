@@ -10,7 +10,7 @@ public class InvalidRuleException extends RuntimeException{
 	private String errorMessage;
 
 	public InvalidRuleException(String errorMessage) {
-		super();
+		super(errorMessage);
 		this.errorMessage = errorMessage;
 	}
 

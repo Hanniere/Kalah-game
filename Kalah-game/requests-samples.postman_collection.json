@@ -11,7 +11,7 @@
 			"name": "perform-turn-request",
 			"request": {
 				"url": {
-					"raw": "http://localhost:8080/kalah/play/?chosenhouse=3",
+					"raw": "http://localhost:8080/kalah/play/?house=4&matchId=bb985a44-7044-47aa-91da-4f7117001b14",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -24,8 +24,14 @@
 					],
 					"query": [
 						{
-							"key": "chosenhouse",
-							"value": "3",
+							"key": "house",
+							"value": "4",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "matchId",
+							"value": "bb985a44-7044-47aa-91da-4f7117001b14",
 							"equals": true,
 							"description": ""
 						}
@@ -42,7 +48,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"gameBoard\": {\n        \"numberOfStonesForPit\": 4,\n        \"player1PitList\": [\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            }\n        ],\n        \"player2PitList\": [\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 4,\n                \"type\": \"house\"\n            }\n        ],\n        \"player1Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        },\n        \"player2Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        }\n    },\n    \"gameStatus\": \"INPROGRESS\",\n    \"currentTurn\": null,\n    \"playersList\": [\n        {\n            \"id\": 10,\n            \"name\": \"Player north\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Player South\"\n        }\n    ],\n    \"currentPlayer\": {\n        \"id\": 10,\n        \"name\": \"Player north\"\n    },\n    \"winner\": null\n}"
+					"raw": "{\n    \"gameBoard\": {\n        \"numberOfStonesForPit\": 6,\n        \"player1HouseList\": [\n            {\n                \"stones\": 0,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 0,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 0,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 0,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 1,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 2,\n                \"type\": \"house\"\n            }\n        ],\n        \"player2HouseList\": [\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            },\n            {\n                \"stones\": 6,\n                \"type\": \"house\"\n            }\n        ],\n        \"player1Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        },\n        \"player2Store\": {\n            \"stones\": 0,\n            \"type\": \"store\"\n        }\n    },\n    \"gameStatus\": \"INPROGRESS\",\n    \"currentTurn\": null,\n    \"playersList\": [\n        {\n            \"id\": 10,\n            \"name\": \"Player north\",\n            \"playerNumber\": 1\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Player South\",\n            \"playerNumber\": 2\n        }\n    ],\n    \"currentPlayer\": {\n        \"id\": 10,\n        \"name\": \"Player north\",\n        \"playerNumber\": 1\n    },\n    \"winner\": null\n}"
 				},
 				"description": "Request para efetuar a jogada."
 			},
@@ -83,7 +89,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": 10,\r\n     \"name\": \"Player north\"\r\n}\r\n\r\n{\r\n\t\"id\": 11,\r\n     \"name\": \"Player South\"\r\n}\r\n\t"
+					"raw": ""
 				},
 				"description": ""
 			},

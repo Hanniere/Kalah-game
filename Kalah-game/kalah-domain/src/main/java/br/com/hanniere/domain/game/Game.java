@@ -2,23 +2,20 @@ package br.com.hanniere.domain.game;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import br.com.hanniere.domain.player.Player;
 
 /**
- * This class represents the current game.
+ * This class represents the current game match.
  * @author Hanniere
  *
  */
-@Component
 public class Game {
 
 	private Board gameBoard;
 
 	private GameStatus gameStatus;
 
-	//Current house index of the turn.
+	//Current turn
 	private Turn currentTurn;
 
 	private List<Player> playersList;
@@ -35,7 +32,6 @@ public class Game {
 
 		return null;
 	}
-
 
 	//getters and setters
 	public GameStatus getGameStatus() {

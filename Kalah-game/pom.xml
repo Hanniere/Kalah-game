@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>kalah-domain</module>
-		<module>kalah-persistence</module>
+		<module>kalah-repository</module>
 		<module>kalah-rest</module>
 		<module>kalah-service</module>
 	</modules>

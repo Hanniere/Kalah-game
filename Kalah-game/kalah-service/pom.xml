@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>br.com.hanniere</groupId>
-            <artifactId>kalah-persistence</artifactId>
+            <artifactId>kalah-repository</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

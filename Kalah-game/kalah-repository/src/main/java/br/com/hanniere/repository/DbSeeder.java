@@ -1,4 +1,4 @@
-package br.com.hanniere.persistence;
+package br.com.hanniere.repository;
 
 import java.util.ArrayList;
 import java.util.List;

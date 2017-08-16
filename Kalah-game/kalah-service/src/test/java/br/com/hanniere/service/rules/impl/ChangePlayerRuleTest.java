@@ -1,6 +1,6 @@
 package br.com.hanniere.service.rules.impl;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -23,17 +23,16 @@ import br.com.hanniere.repository.PlayerRepository;
 import br.com.hanniere.service.ServiceApplication;
 import br.com.hanniere.service.rules.KalahRule;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles({"embeddeddb"})
 @SpringBootTest(webEnvironment = WebEnvironment.NONE, classes = ServiceApplication.class)
-public class DistributeStonesRuleTest {
+public class ChangePlayerRuleTest {
 
 	@Autowired
 	private PlayerRepository playerRepository;
 
-	@Resource(name="distributeStonesRule")
-	private KalahRule distributeStonesRule;
+	@Resource(name="changePlayerRule")
+	private KalahRule changePlayerRule;
 
 	private Game kalahGame;
 
@@ -54,19 +53,19 @@ public class DistributeStonesRuleTest {
 
 	}
 
+	@Test
+	public void testChangeFromPlayer1ToPlayer2() {
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
+		changePlayerRule.execute(kalahGame, -1);
+		assertEquals(kalahGame.getCurrentPlayer().getPlayerNumber(), 2);
+
+	}
 
 	@Test
-	public void testDistributeStones() {
-		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
-		distributeStonesRule.execute(kalahGame, 0);
-
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[1].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[2].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[3].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[4].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[5].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1Store().getStones(), 1);
-
+	public void testChangeFromPlayer2ToPlayer1() {
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(1));
+		changePlayerRule.execute(kalahGame, -1);
+		assertEquals(kalahGame.getCurrentPlayer().getPlayerNumber(), 1);
 	}
 
 }

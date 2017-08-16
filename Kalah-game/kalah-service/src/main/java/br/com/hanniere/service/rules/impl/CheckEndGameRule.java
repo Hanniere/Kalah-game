@@ -1,5 +1,7 @@
 package br.com.hanniere.service.rules.impl;
 
+import org.springframework.stereotype.Component;
+
 import br.com.hanniere.domain.game.*;
 import br.com.hanniere.domain.game.pit.impl.House;
 import br.com.hanniere.domain.player.Player;
@@ -10,6 +12,7 @@ import br.com.hanniere.service.rules.KalahRule;
  * @author Hanniere
  *
  */
+@Component(value="checkEndGameRule")
 public class CheckEndGameRule implements KalahRule {
 
 	KalahRule nextRule;
@@ -18,6 +21,10 @@ public class CheckEndGameRule implements KalahRule {
 	public void setNextRule(KalahRule rule) {
 		this.nextRule = rule;
 
+	}
+
+	public CheckEndGameRule() {
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -58,7 +65,7 @@ public class CheckEndGameRule implements KalahRule {
 				kalahGame.setWinner(null);
 
 		}
-		else{
+		else if(nextRule != null){
 			nextRule.execute(kalahGame, chosenHouse);
 		}
 	}

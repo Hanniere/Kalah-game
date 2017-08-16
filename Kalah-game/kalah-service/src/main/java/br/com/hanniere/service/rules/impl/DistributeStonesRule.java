@@ -1,8 +1,12 @@
 package br.com.hanniere.service.rules.impl;
 
+import org.springframework.stereotype.Component;
+
 import br.com.hanniere.domain.game.*;
 import br.com.hanniere.domain.game.pit.impl.House;
 import br.com.hanniere.domain.player.Player;
+import br.com.hanniere.service.exception.InvalidMoveException;
+import br.com.hanniere.service.exception.InvalidRuleException;
 import br.com.hanniere.service.rules.KalahRule;
 
 /**
@@ -12,6 +16,7 @@ import br.com.hanniere.service.rules.KalahRule;
  * @author Hanniere
  *
  */
+@Component(value="distributeStonesRule")
 public class DistributeStonesRule implements KalahRule{
 
 	private KalahRule nextRule;
@@ -22,12 +27,17 @@ public class DistributeStonesRule implements KalahRule{
 
 	}
 
+	public DistributeStonesRule() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void execute(Game kalahGame, int chosenHouse) {
 
 		kalahGame.setCurrentTurn(new Turn(chosenHouse));
 		distributeStones(kalahGame, chosenHouse);
-		nextRule.execute(kalahGame, chosenHouse);
+		if(nextRule != null)
+			nextRule.execute(kalahGame, chosenHouse);
 
 	}
 
@@ -42,6 +52,10 @@ public class DistributeStonesRule implements KalahRule{
 		Pit[] playerHouses = board.retrievePlayerHouses(playerField);
 
 		int numOfStones = ((House)playerHouses[chosenHouse]).emptyTheHouse();
+
+		if(numOfStones == 0){
+			throw new InvalidMoveException("This house is empty, please choose another house");
+		}
 
 		while(numOfStones != 0){
 

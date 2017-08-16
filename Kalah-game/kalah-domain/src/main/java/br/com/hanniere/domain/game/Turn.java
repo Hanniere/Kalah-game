@@ -1,5 +1,10 @@
 package br.com.hanniere.domain.game;
 
+/**
+ * This class contains informations about the current move of the match.
+ * @author Hanniere
+ *
+ */
 public class Turn {
 
 	private int lastDropedIndex;

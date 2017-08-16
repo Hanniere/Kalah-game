@@ -4,6 +4,11 @@ import br.com.hanniere.domain.game.pit.impl.House;
 import br.com.hanniere.domain.game.pit.impl.Store;
 import br.com.hanniere.domain.player.Player;
 
+/**
+ * This Class represents the board of the current game match.
+ * @author Hanniere
+ *
+ */
 public class Board {
 
 
@@ -19,12 +24,6 @@ public class Board {
 	private Pit[] player2HouseList;
 	private Pit player1Store;
 	private Pit player2Store;
-
-	/**
-	 * empty constructor
-	 */
-	public Board() {
-	}
 
 	public Board(int numberOfStonesForPit){
 		this.numberOfStonesForPit = numberOfStonesForPit;

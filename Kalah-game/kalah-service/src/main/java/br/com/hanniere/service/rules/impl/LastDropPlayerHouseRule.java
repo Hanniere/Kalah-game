@@ -1,5 +1,7 @@
 package br.com.hanniere.service.rules.impl;
 
+import org.springframework.stereotype.Component;
+
 import br.com.hanniere.domain.game.Board;
 import br.com.hanniere.domain.game.Game;
 import br.com.hanniere.domain.game.pit.impl.House;
@@ -11,6 +13,7 @@ import br.com.hanniere.service.rules.KalahRule;
  * @author Hanniere
  *
  */
+@Component(value="lastDropPlayerHouseRule")
 public class LastDropPlayerHouseRule implements KalahRule {
 
 	KalahRule nextRule;
@@ -19,6 +22,10 @@ public class LastDropPlayerHouseRule implements KalahRule {
 	public void setNextRule(KalahRule rule) {
 		this.nextRule = rule;
 
+	}
+
+	public LastDropPlayerHouseRule() {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -48,8 +55,8 @@ public class LastDropPlayerHouseRule implements KalahRule {
 			board.retrievePlayerStore(currentPlayerNumber).addStone(stones);
 
 		}
-
-		nextRule.execute(kalahGame, chosenHouse);
+		if(nextRule != null)
+			nextRule.execute(kalahGame, chosenHouse);
 
 	}
 

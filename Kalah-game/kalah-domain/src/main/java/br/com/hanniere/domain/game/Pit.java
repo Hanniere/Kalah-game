@@ -4,6 +4,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import br.com.hanniere.domain.deserializer.PitDeserializer;
 
+/**
+ * Abstract class that represents a Pit.
+ * @author Hanniere
+ *
+ */
 @JsonDeserialize(using = PitDeserializer.class)
 public abstract class Pit {
 	public final static String TYPE_HOUSE = "house";

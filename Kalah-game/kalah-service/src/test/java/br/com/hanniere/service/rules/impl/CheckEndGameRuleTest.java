@@ -1,6 +1,6 @@
 package br.com.hanniere.service.rules.impl;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -23,17 +23,16 @@ import br.com.hanniere.repository.PlayerRepository;
 import br.com.hanniere.service.ServiceApplication;
 import br.com.hanniere.service.rules.KalahRule;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles({"embeddeddb"})
 @SpringBootTest(webEnvironment = WebEnvironment.NONE, classes = ServiceApplication.class)
-public class DistributeStonesRuleTest {
+public class CheckEndGameRuleTest {
 
 	@Autowired
 	private PlayerRepository playerRepository;
 
-	@Resource(name="distributeStonesRule")
-	private KalahRule distributeStonesRule;
+	@Resource(name="checkEndGameRule")
+	private KalahRule checkEndGameRule;
 
 	private Game kalahGame;
 
@@ -54,19 +53,43 @@ public class DistributeStonesRuleTest {
 
 	}
 
+	@Test
+	public void testEndPlayer1() {
+
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
+
+
+		kalahGame.getGameBoard().getPlayer1HouseList()[0].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[1].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[2].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[3].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[4].setStones(0);
+		kalahGame.getGameBoard().getPlayer1HouseList()[5].setStones(0);
+		kalahGame.getGameBoard().getPlayer1Store().setStones(1);
+
+		checkEndGameRule.execute(kalahGame, -1);
+
+		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
+	}
 
 	@Test
-	public void testDistributeStones() {
-		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(0));
-		distributeStonesRule.execute(kalahGame, 0);
+	public void testEndPlayer2() {
 
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[1].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[2].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[3].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[4].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1HouseList()[5].getStones(), 7);
-		assertEquals(kalahGame.getGameBoard().getPlayer1Store().getStones(), 1);
+		kalahGame.setCurrentPlayer(kalahGame.getPlayersList().get(1));
 
+
+		kalahGame.getGameBoard().getPlayer2HouseList()[0].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[1].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[2].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[3].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[4].setStones(0);
+		kalahGame.getGameBoard().getPlayer2HouseList()[5].setStones(0);
+		kalahGame.getGameBoard().getPlayer2Store().setStones(1);
+
+		checkEndGameRule.execute(kalahGame, -1);
+
+		assertEquals(GameStatus.FINISHED, kalahGame.getGameStatus());
 	}
+
 
 }

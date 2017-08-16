@@ -1,33 +1,40 @@
 package br.com.hanniere.service.rules;
 
-import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
-import br.com.hanniere.service.rules.impl.*;
+import org.springframework.stereotype.Component;
 
 @Component
 public class RuleChainConfigurator {
 
-	private KalahRule distributeStoneRule;
+	@Resource(name="distributeStonesRule")
+	private KalahRule distributeStonesRule;
 
-	public RuleChainConfigurator() {
+	@Resource(name="lastDropPlayerStoreRule")
+	private KalahRule lastDropPlayerStoreRule;
 
-		//initializing the chain of rules
-		this.distributeStoneRule = new DistributeStonesRule();
-		KalahRule lastDropPlayerStoreRule = new LastDropPlayerStoreRule();
-		KalahRule lastDropPlayerHouseRule = new LastDropPlayerHouseRule();
-		KalahRule checkEndGameRule = new CheckEndGameRule();
-		KalahRule checkPlayerRule = new ChangePlayerRule();
+	@Resource(name="lastDropPlayerHouseRule")
+	private KalahRule lastDropPlayerHouseRule;
 
+	@Resource(name="checkEndGameRule")
+	private KalahRule checkEndGameRule;
+
+	@Resource(name="changePlayerRule")
+	private KalahRule changePlayerRule;
+
+	@PostConstruct
+	public void configureRules() {
 
 		//applying the order of rules
-		distributeStoneRule.setNextRule(lastDropPlayerStoreRule);
+		distributeStonesRule.setNextRule(lastDropPlayerStoreRule);
 		lastDropPlayerStoreRule.setNextRule(lastDropPlayerHouseRule);
 		lastDropPlayerHouseRule.setNextRule(checkEndGameRule);
-		checkEndGameRule.setNextRule(checkPlayerRule);
+		checkEndGameRule.setNextRule(changePlayerRule);
 	}
 
 	public KalahRule getaDistributeRule() {
-		return distributeStoneRule;
+		return distributeStonesRule;
 	}
 
 }

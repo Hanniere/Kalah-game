@@ -2,6 +2,13 @@ package br.com.hanniere.domain.game.pit.impl;
 
 import br.com.hanniere.domain.game.Pit;
 
+/**
+ * Concrete class that represents a House. A house is the place where player choose
+ * to distribute his own stones.
+ *
+ * @author Hanniere
+ *
+ */
 public class House extends Pit{
 
 	public House(int stones) {
@@ -10,7 +17,7 @@ public class House extends Pit{
 
 
 	/**
-	 * This method can be used in a turn or capture stones.
+	 * This method can be used in a move or to capture stones.
 	 * @return stones qtd
 	 */
 	public int emptyTheHouse(){

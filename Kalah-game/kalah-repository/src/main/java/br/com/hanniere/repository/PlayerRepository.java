@@ -1,4 +1,4 @@
-package br.com.hanniere.persistence;
+package br.com.hanniere.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
